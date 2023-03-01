@@ -3,7 +3,7 @@
 let
   revealSrc = fetchFromGitHub { owner = "hakimel"; repo = "reveal.js"; rev = "4.4.0"; sha256 = "sha256-bqNgaBT6WPfumhdG1VPZ6ngn0QA9RDuVtVJtVwxbOd4="; };
   mkCmd = { src, inputs ? [ "*.md" ], standalone ? true, incremental ? true, theme ? null, ... }@attrs:
-    "${pandoc}/bin/pandoc ${toString inputs} --to=revealjs -M revealjs-url=${revealSrc}"
+    "${pandoc}/bin/pandoc --verbose ${toString inputs} --to=revealjs -M revealjs-url=${revealSrc}"
     + lib.optionalString standalone " --standalone"
     + lib.optionalString incremental " --incremental"
     + lib.optionalString (theme != null) " --highlight-style '${theme}'";

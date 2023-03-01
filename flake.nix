@@ -14,7 +14,6 @@
         slides = pkgs.callPackage lib { };
       in
       slides.mkFlake {
-        # inherit pkgs;
         pname = "nix";
         version = "0.0.1";
         src = ./src;
