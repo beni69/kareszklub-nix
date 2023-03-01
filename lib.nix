@@ -24,7 +24,7 @@ let
       ln -vs ${mkDerivation attrs}/share/${pname}.html $out/share
       tee $out/open <<EOF
       #!${stdenvNoCC.shell}
-      ${xdg-utils}/bin/xdg-open $out/share/${pname}.html
+      ${xdg-utils}/bin/xdg-open $out/share/${pname}.html >/dev/null 2>&1 & disown
       EOF
       chmod +x $out/open
     '';
